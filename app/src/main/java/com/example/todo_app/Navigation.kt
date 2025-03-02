@@ -5,13 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-
-import androidx.lifecycle.viewmodel.compose.viewModel
-
 
 @Composable
-fun Navigation(viewModel: TodoViewModel = viewModel(),
+fun Navigation(viewModel: TodoViewModel,
                navController: NavHostController,
                innerPaddingValues: PaddingValues
 ){
@@ -20,13 +16,11 @@ fun Navigation(viewModel: TodoViewModel = viewModel(),
         startDestination = Screen.HomeScreen.route
     ){
         composable(Screen.HomeScreen.route){
-            TodoListView()
+            TodoListView(viewModel)
         }
 
         composable(Screen.AddScreen.route){
-            AddEditView()
+            AddEditView(viewModel)
         }
-
-
     }
 }

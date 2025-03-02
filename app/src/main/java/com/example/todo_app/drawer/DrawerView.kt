@@ -26,10 +26,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.todo_app.Navigation
 import com.example.todo_app.Screen
+import com.example.todo_app.TodoViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -39,7 +39,8 @@ fun DetailedDrawerExample(
     content: @Composable (PaddingValues) -> Unit,
     drawerState: DrawerState,
     scope: CoroutineScope,
-    navController: NavHostController
+    navController: NavHostController,
+    todoViewModel: TodoViewModel
 ) {
     ModalNavigationDrawer(
         drawerContent = {
@@ -129,7 +130,7 @@ fun DetailedDrawerExample(
                 )
             }
         ) { innerPadding ->
-            Navigation(navController = navController, viewModel = viewModel(), innerPaddingValues = innerPadding)
+            Navigation(navController = navController, viewModel = todoViewModel, innerPaddingValues = innerPadding)
         }
     }
 }

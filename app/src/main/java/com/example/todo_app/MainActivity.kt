@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,13 +17,13 @@ import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.todo_app.drawer.DetailedDrawerExample
@@ -40,15 +39,14 @@ class MainActivity : ComponentActivity() {
             val scope = rememberCoroutineScope()
             val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
             val controller: NavHostController = rememberNavController()
+            val todoViewModel: TodoViewModel = viewModel()
             Todo_appTheme {
                 Scaffold(
                     topBar = {
                         TopAppBar(
                             title = {
-
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
-                                    // space between
                                     horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
                                     Text("Mini Todo App")
@@ -78,7 +76,7 @@ class MainActivity : ComponentActivity() {
                         drawerState = drawerState,
                         scope = scope,
                         navController = controller,
-
+                        todoViewModel = todoViewModel,
                         content = {
                             Column(
                                 modifier = Modifier.padding(innerPadding)
@@ -97,6 +95,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-
