@@ -14,12 +14,11 @@ class TodoRepository(private val dao: TodoDao) {
         return dao.getById(id)
     }
 
-    suspend fun update(wish: Todo) {
-        dao.update(wish)
+    suspend fun update(todo: Todo) {
+        dao.update(todo)
     }
 
-    suspend fun delete(wish: Todo) {
-        dao.delete(wish)
+    suspend fun delete(todo: Todo) {
+        dao.delete(todo)
     }
-
 }

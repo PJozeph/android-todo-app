@@ -41,36 +41,35 @@ class MainActivity : ComponentActivity() {
             val controller: NavHostController = rememberNavController()
             val todoViewModel: TodoViewModel = viewModel()
             Todo_appTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    Text("Mini Todo App")
-                                    Icon(
-                                        imageVector = Icons.Default.Favorite,
-                                        contentDescription = "Menu"
-                                    )
-                                }
-                                },
-                            navigationIcon = {
-                                IconButton(onClick = {
-                                    scope.launch {
-                                        if (drawerState.isClosed) {
-                                            drawerState.open()
-                                        } else {
-                                            drawerState.close()
-                                        }
-                                    }
-                                }) {
-                                    Icon(Icons.Default.Menu, contentDescription = "Menu")
-                                }
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text("Mini Todo App")
+                                Icon(
+                                    imageVector = Icons.Default.Favorite,
+                                    contentDescription = "Menu"
+                                )
                             }
-                        )
-                    }
+                        },
+                        navigationIcon = {
+                            IconButton(onClick = {
+                                scope.launch {
+                                    if (drawerState.isClosed) {
+                                        drawerState.open()
+                                    } else {
+                                        drawerState.close()
+                                    }
+                                }
+                            }) {
+                                Icon(Icons.Default.Menu, contentDescription = "Menu")
+                            }
+                        }
+                    )
+                }
                 ) { innerPadding ->
                     DetailedDrawerExample(
                         drawerState = drawerState,

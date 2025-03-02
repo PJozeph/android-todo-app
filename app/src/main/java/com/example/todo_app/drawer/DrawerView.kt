@@ -50,14 +50,16 @@ fun DetailedDrawerExample(
                         .padding(horizontal = 16.dp)
                         .verticalScroll(rememberScrollState())
                 ) {
+
                     Spacer(Modifier.height(12.dp))
+
                     Text(
                         "Drawer Title",
                         modifier = Modifier.padding(16.dp),
                         style = MaterialTheme.typography.titleLarge
                     )
-                    HorizontalDivider()
 
+                    HorizontalDivider()
 
                     NavigationDrawerItem(
                         label = { Text("Todo List") },
@@ -73,7 +75,8 @@ fun DetailedDrawerExample(
                         label = { Text("Add Todo") },
                         selected = false,
                         onClick = {
-                            navController.navigate(Screen.AddScreen.route)
+                            // add todo so we pass 0 as id
+                            navController.navigate(Screen.AddEditScreen.route + "/0")
                             scope.launch {
                                 drawerState.close();
                             }
@@ -81,7 +84,6 @@ fun DetailedDrawerExample(
                     )
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-
 
                     NavigationDrawerItem(
                         label = { Text("Settings") },
