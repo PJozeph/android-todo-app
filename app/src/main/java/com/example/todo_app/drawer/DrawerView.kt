@@ -1,6 +1,7 @@
 package com.example.todo_app.drawer
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -38,14 +39,15 @@ fun Drawer(
     drawerState: DrawerState,
     scope: CoroutineScope,
     navController: NavHostController,
-    todoViewModel: TodoViewModel
+    todoViewModel: TodoViewModel,
+    innerPaddingValues: PaddingValues
 ) {
     ModalNavigationDrawer(
         drawerContent = {
             ModalDrawerSheet {
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
+                        .padding(innerPaddingValues)
                         .verticalScroll(rememberScrollState())
                 ) {
 

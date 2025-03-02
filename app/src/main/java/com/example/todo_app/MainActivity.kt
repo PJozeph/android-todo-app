@@ -35,7 +35,6 @@ import com.example.todo_app.ui.theme.Todo_appTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,12 +92,13 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                ) {
+                ) { innerPadding ->
                     Drawer(
                         drawerState = drawerState,
                         scope = scope,
                         navController = controller,
-                        todoViewModel = todoViewModel
+                        todoViewModel = todoViewModel,
+                        innerPaddingValues = innerPadding
                     )
 
                 }
