@@ -1,7 +1,6 @@
 package com.example.todo_app.drawer
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,8 +34,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun DetailedDrawerExample(
-    content: @Composable (PaddingValues) -> Unit,
+fun Drawer(
     drawerState: DrawerState,
     scope: CoroutineScope,
     navController: NavHostController,
