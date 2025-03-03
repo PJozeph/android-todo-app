@@ -14,9 +14,11 @@ abstract class TodoDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     abstract suspend fun add(wishEntity: Todo)
 
-    // Loads all todo from the todo table
     @Query("Select * from `todo-table`")
     abstract fun getAll(): Flow<List<Todo>>
+
+    @Query("Select * from `todo-table` where `todo-title` like '%' || :title || '%'")
+    abstract fun findByTitle(title: String): Flow<List<Todo>>
 
     @Update
     abstract suspend fun update(wishEntity: Todo)

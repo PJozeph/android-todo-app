@@ -109,7 +109,7 @@ fun StyledTextField(
         onValueChange = onValueChange,
         label = { Text(label, color = Color.Gray) },
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth().padding(start = 8.dp, end = 8.dp),
         shape = RoundedCornerShape(8.dp),
         singleLine = true
     )

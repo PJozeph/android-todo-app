@@ -13,6 +13,10 @@ class TodoRepository(private val dao: TodoDao) {
     fun getById(id: Long): Flow<Todo> {
         return dao.getById(id)
     }
+    
+    fun findByTitle(title: String): Flow<List<Todo>> {
+        return dao.findByTitle(title)
+    }
 
     suspend fun update(todo: Todo) {
         dao.update(todo)
