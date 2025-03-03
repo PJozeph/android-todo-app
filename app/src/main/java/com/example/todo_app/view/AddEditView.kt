@@ -8,10 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -53,18 +53,12 @@ fun AddEditView(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        TextField(
-            title.value,
-            {
-                title.value = it
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
-        )
-        TextField(description.value, {
+        StyledTextField(title.value, {
+            title.value = it
+        }, "Title")
+        StyledTextField(description.value, {
             description.value = it
-        }, modifier = Modifier.fillMaxWidth())
+        }, "Description")
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -75,7 +69,6 @@ fun AddEditView(
                 onClick = {
                     navHostController.popBackStack()
                 },
-
             ) {
                 Text("Cancel")
             }
@@ -98,13 +91,28 @@ fun AddEditView(
                         )
                     }
                     navHostController.popBackStack()
-                },
-
-            ) {
+                }) {
                 Text("Save")
             }
         }
     }
+}
+
+@Composable
+fun StyledTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label, color = Color.Gray) },
+        modifier = Modifier
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        singleLine = true
+    )
 }
 
 @Preview
