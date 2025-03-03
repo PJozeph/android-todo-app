@@ -38,7 +38,7 @@ class TodoViewModel(
         }
     }
 
-    fun deleteWish(todo: Todo){
+    fun delete(todo: Todo){
         viewModelScope.launch(Dispatchers.IO) {
             todoRepository.delete(todo)
             getAllTodo = todoRepository.getAll()

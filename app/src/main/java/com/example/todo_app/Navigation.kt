@@ -18,10 +18,11 @@ fun Navigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route
+        startDestination = Screen.HomeScreen.route,
+
     ) {
         composable(Screen.HomeScreen.route) {
-            TodoListView(viewModel, navController)
+            TodoListView(viewModel, navController, innerPaddingValues)
         }
 
         composable(Screen.AddEditScreen.route+"/{id}") {

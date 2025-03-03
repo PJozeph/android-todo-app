@@ -75,7 +75,7 @@ fun AddEditView(
                 onClick = {
                     navHostController.popBackStack()
                 },
-                colors = ButtonDefaults.buttonColors(Color.Red)
+
             ) {
                 Text("Cancel")
             }
@@ -99,7 +99,7 @@ fun AddEditView(
                     }
                     navHostController.popBackStack()
                 },
-                colors = ButtonDefaults.buttonColors(Color.Green)
+
             ) {
                 Text("Save")
             }

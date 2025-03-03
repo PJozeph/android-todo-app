@@ -2,6 +2,7 @@ package com.example.todo_app.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,17 +19,18 @@ import com.example.todo_app.TodoViewModel
 @Composable
 fun TodoListView(
     viewModel: TodoViewModel,
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    innerPaddingValues: PaddingValues
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().padding(top = 25.dp),
+        modifier = Modifier.fillMaxSize().padding(innerPaddingValues),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
         val todoList by viewModel.getAllTodo.collectAsState(initial = emptyList())
         LazyColumn {
             items(todoList) { todo ->
-                TodoItem(todo, navHostController)
+                TodoItem(todo, navHostController, viewModel)
             }
         }
     }
